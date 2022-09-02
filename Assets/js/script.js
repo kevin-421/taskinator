@@ -19,6 +19,14 @@ var taskFormHandler = function(event) {
     // send it as an argument to createTaskE1
     createTaskE1(taskDataObj);
     
+    //check if values are empty strings
+
+    if (!taskNameInput || !taskTypeInput) {
+        alert("You need to fill out the task form!");
+        return false;
+    }
+
+    formE1.reset();
 };
 
 var createTaskE1 = function(taskDataObj) {
