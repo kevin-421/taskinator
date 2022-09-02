@@ -9,6 +9,10 @@ var createTaskHandler = function() {
     var taskNameInput = document.querySelector("input[name='task-name']").value;
 
     var taskTypeInput = document.querySelector("select[name='task-type']").value;
+
+    event.preventDefault();
+
+    var listItemE1 = document.createElement("li");
     
     // create list item
     var listItemE1 = document.createElement("li");
@@ -30,5 +34,6 @@ var createTaskHandler = function() {
 
 };
 
-formE1.addEventListener('submit', createTaskHandler);
+
+formE1.addEventListener('submit' , createTaskHandler);
     
