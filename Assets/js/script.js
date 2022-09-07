@@ -45,6 +45,9 @@ var createTaskE1 = function(taskDataObj) {
      taskInfoE1.innerHTML = "<h3 class ='task-name'>" + taskDataObj.name + "</h3><span class='task-type'>" + taskDataObj.type + "</span>";
  
      listItemE1.appendChild(taskInfoE1);
+
+     var taskActionsE1 = createTaskActions(taskIdCounter);
+     console.log("taskActionsE1");
  
      tasksToDoE1.appendChild(listItemE1);
 
@@ -53,7 +56,46 @@ var createTaskE1 = function(taskDataObj) {
 };
 
 var createTaskActions = function (taskId) {
-    
+    var actionContainerE1 = document.createElement("div");
+    actionContainerE1.className = "task-actions";
+
+    //create edit button 
+    var editButtonE1 = document.createElement("button");
+    editButtonE1.textContent = "Edit";
+    editButtonE1.className = "btn edit-btn";
+    editButtonE1.setAttribute("data-task-id", taskId);
+
+    actionContainerE1.appendChild(editButtonE1);
+
+    //create delete button
+    var deleteButtonE1 = document.createElement("button");
+    deleteButtonE1.textContent = "Delete";
+    deleteButtonE1.className = "btn delete-btn";
+    deleteButtonE1.setAttribute("data-task-id", taskId);
+
+    actionContainerE1.appendChild(deleteButtonE1);
+
+    var statusSelectE1 = document.createElement("select");
+    statusSelectE1.className = "select-status";
+    statusSelectE1.setAttribute("name", "status-change");
+    statusSelectE1.setAttribute("data-task-id", taskId);
+
+    var statusChoices = ["To Do", "In Progress", "Completed"];
+
+    for (let i = 0; i < statusChoices.length; i++) {
+        //create option element 
+        var statusOptionE1 = document.createElement("option");
+        statusOptionE1.textContent = statusChoices[i];
+        statusOptionE1.setAttribute("value", statusChoices[i]);
+
+        //append to select 
+        statusSelectE1.appendChild(statusOptionE1);
+        
+        
+    }
+    actionContainerE1.appendChild(statusSelectE1);
+
+    return actionContainerE1;
 }
 
 formE1.addEventListener('submit' , taskFormHandler);
